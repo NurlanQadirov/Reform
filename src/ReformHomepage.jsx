@@ -7,13 +7,18 @@ import { ChevronRight, Code, Wifi, Shield, Compass, Check, Linkedin, Twitter, Gi
 // =================================================================
 
 const AnimatedSection = ({ children, className }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const ref = React.useRef(null);
+  // `once: true` parametrini sildik ki, animasiya təkrarlansın
+  const isInView = useInView(ref, { amount: 0.2 });
   const controls = useAnimation();
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (isInView) {
+      // Element görünəndə "visible" animasiyasını başlat
       controls.start("visible");
+    } else {
+      // Ekrana düşmədikdə isə dərhal "hidden" vəziyyətinə qaytar
+      controls.start("hidden");
     }
   }, [isInView, controls]);
 
@@ -32,7 +37,7 @@ const AnimatedSection = ({ children, className }) => {
       {children}
     </motion.section>
   );
-};
+}
 
 const ParticleBackground = () => {
   const canvasRef = useRef(null);
