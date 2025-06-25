@@ -5,10 +5,10 @@ import AnimatedSection from '../components/common/AnimatedSection';
 
 const AboutPage = () => {
     const teamMembers = [
-        {name: "Nurlan Qədirov", role: "Təsisçi & Baş Mühəndis", img: "https://i.pravatar.cc/150?u=nurlan"},
+        {name: "İsmayıl Abbasov", role: "Təsisçi & Baş Mühəndis", img: "https://i.pravatar.cc/150?u=ismayıl"},
         {name: "Aynurə Məmmədova", role: "Layihə Meneceri", img: "https://i.pravatar.cc/150?u=aynure"},
         {name: "Elvin Ağayev", role: "Kibertəhlükəsizlik Mütəxəssisi", img: "https://i.pravatar.cc/150?u=elvin"},
-        {name: "Fərid Quliyev", role: "Şəbəkə Arxitektoru", img: "https://i.pravatar.cc/150?u=farid"},
+        {name: "Elman Quliyev", role: "Şəbəkə Arxitektoru", img: "https://i.pravatar.cc/150?u=elman"},
     ];
     return(
         <>
