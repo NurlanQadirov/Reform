@@ -63,7 +63,7 @@ const ParticleBackground = () => {
                          ((particles[a].y - particles[b].y) * (particles[a].y - particles[b].y));
           if (distance < (canvas.width / 8) * (canvas.height / 8)) {
             opacityValue = 1 - (distance / 20000);
-            ctx.strokeStyle = `rgba(148, 0, 211, ${opacityValue * 0.5})`;
+            ctx.strokeStyle = `rgba(148, 0, 211, ${opacityValue * 1})`;
             ctx.lineWidth = 0.5;
             ctx.beginPath();
             ctx.moveTo(particles[a].x, particles[a].y);
@@ -93,7 +93,7 @@ const ParticleBackground = () => {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="fixed top-0 left-0 w-full h-auto z-0 opacity-20" />;
+  return <canvas ref={canvasRef} className="fixed top-0 left-0 w-full h-auto z-0 opacity-80" />;
 };
 
 export default ParticleBackground;
