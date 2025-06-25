@@ -14,8 +14,10 @@ import {
   Settings,
 } from "lucide-react";
 import AnimatedSection from "../components/common/AnimatedSection";
+import BlueprintCTA from '../components/cta/BlueprintCTA';
 
-const HomePage = () => {
+// Funksiya `setActivePage` prop-unu qəbul edir
+const HomePage = ({ setActivePage }) => {
   // Ekranın enini yadda saxlamaq üçün state və effekt
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -24,10 +26,9 @@ const HomePage = () => {
       setWindowWidth(window.innerWidth);
     };
     window.addEventListener("resize", handleResize);
-    // Komponent silindikdə event listener-i təmizləyirik
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-  // ===========================================
+
   const services = [
     {
       id: "software",
@@ -115,7 +116,7 @@ const HomePage = () => {
     "Dell",
     "HP",
   ];
-  // ==== ADDIM 3 KODU BURAYA ƏLAVƏ EDİLİR ====
+
   // Ekran ölçüsünə görə animasiya datalarını dinamik təyin edirik
   const getRingData = () => {
     // Desktop
@@ -144,7 +145,7 @@ const HomePage = () => {
 
   const ringData = getRingData();
   const centralOrbSize = windowWidth >= 768 ? "w-32 h-32" : "w-24 h-24";
-  // ===========================================
+
   return (
     <>
       {/* Hero Section */}
@@ -159,7 +160,6 @@ const HomePage = () => {
             >
               Rəqəmsal Transformasiyanın Arxitekturası
             </motion.h1>
-
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -170,7 +170,6 @@ const HomePage = () => {
               infrastrukturu və qabaqcıl kibertəhlükəsizlik həlləri ilə
               biznesinizi gələcəyə hazırlayırıq.
             </motion.p>
-
             <motion.button
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -201,7 +200,6 @@ const HomePage = () => {
               hərtərəfli həllər təklif edirik.
             </p>
           </div>
-
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
               <motion.div
@@ -265,7 +263,6 @@ const HomePage = () => {
               className="absolute left-1/2 top-0 h-full w-0.5 bg-slate-700/50 hidden lg:block -translate-x-1/2"
               aria-hidden="true"
             ></div>
-
             {processSteps.map((step, index) => (
               <div
                 key={index}
@@ -295,7 +292,6 @@ const HomePage = () => {
                     <p className="text-gray-400">{step.description}</p>
                   </motion.div>
                 </motion.div>
-
                 <motion.div
                   className="hidden lg:flex items-center justify-center w-32 relative lg:order-2"
                   initial={{ scale: 0 }}
@@ -329,7 +325,6 @@ const HomePage = () => {
               <h3 className="text-3xl md:text-4xl font-bold mb-8 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
                 Niyə Bizimlə Çalışmalısınız?
               </h3>
-
               <div className="space-y-2">
                 {trustPoints.map((point, index) => (
                   <motion.div
@@ -409,6 +404,7 @@ const HomePage = () => {
         </div>
       </AnimatedSection>
 
+      {/* Testimonials Section */}
       <AnimatedSection className="py-24">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
@@ -458,6 +454,7 @@ const HomePage = () => {
         </div>
       </AnimatedSection>
 
+      {/* Partners section */}
       <AnimatedSection className="py-24 overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
@@ -483,6 +480,9 @@ const HomePage = () => {
           </motion.div>
         </div>
       </AnimatedSection>
+
+      {/* ==== YENİ "BLUEPRINT" BLOKU BURADA ÇAĞIRILIR ==== */}
+      <BlueprintCTA setActivePage={setActivePage} />
     </>
   );
 };

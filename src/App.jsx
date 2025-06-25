@@ -19,19 +19,18 @@ function App() {
   const renderPage = () => {
     switch (activePage) {
       case 'Xidmətlər':
-        return <ServicesPage />;
+        return <ServicesPage setActivePage={setActivePage} />;
       case 'Haqqımızda':
-        return <AboutPage />;
+        return <AboutPage setActivePage={setActivePage} />;
       case 'Texnologiyalar':
-        return <TechnologiesPage />;
+        return <TechnologiesPage setActivePage={setActivePage} />;
       case 'Əlaqə':
-        return <ContactPage />;
+        return <ContactPage setActivePage={setActivePage} />;
       case 'Ana Səhifə':
       default:
-        return <HomePage />;
+        return <HomePage setActivePage={setActivePage} />; 
     }
   };
-
   return (
     <div className="min-h-screen bg-slate-950 text-gray-200 font-sans overflow-x-hidden selection:bg-cyan-400 selection:text-slate-900">
       <ParticleBackground />
